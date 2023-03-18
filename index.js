@@ -1,13 +1,14 @@
-require('dotenv');
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express');
 const httpProxy = require('http-proxy');
 const app = express();
 const proxy = httpProxy.createProxyServer({});
 
 app.use('/api/v1/admin', (req, res) => {
-  console.log("request successful");
-  const targetUrl = process.env.PROXY_URL;
-
+  const targetUrl = process.env.TARGET_URL || 'http://localhost:5000';
+  
   // Proxy the request to the target server
   proxy.web(req, res, { target: targetUrl });
 });
