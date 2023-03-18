@@ -5,6 +5,12 @@ const express = require('express');
 const httpProxy = require('http-proxy');
 const app = express();
 const proxy = httpProxy.createProxyServer({});
+const morgan = require('morgan');
+app.use(morgan('tiny'));
+
+app.use('/', (req, res)=>{
+  res.status(200).send({message : "success"});
+})
 
 app.use('/api/v1/admin', (req, res) => {
   const targetUrl = process.env.TARGET_URL || 'http://localhost:5000';
