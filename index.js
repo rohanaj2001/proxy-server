@@ -20,6 +20,6 @@ app.get('/', (req, res)=>{
 //   proxy.web(req, res, { target: targetUrl });
 // });
 
-app.listen(8080, () => {
-  console.log('Proxy server listening on port 8080');
+app.listen(process.env.PORT, () => {
+  console.log(`Proxy server listening on port ${process.env.PORT}`);
 });
