@@ -13,7 +13,7 @@ app.get('/', (req, res)=>{
 })
 
 app.use('/api/v1/admin', (req, res) => {
-  const targetUrl = process.env.TARGET_URL || 'http://localhost:5000';
+  const targetUrl = process.env.TARGET_URL;
   
   // Proxy the request to the target server
   proxy.web(req, res, { target: targetUrl });
