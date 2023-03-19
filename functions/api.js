@@ -18,7 +18,7 @@ router.get('/', (req, res)=>{
 router.use('/api/v1/admin', (req, res) => {
   const targetUrl = process.env.TARGET_URL;
   
-app.use('/.netlify/functions/api, router')
+app.use('/.netlify/functions/api', router)
   // Proxy the request to the target server
   proxy.web(req, res, { target: targetUrl });
 });
