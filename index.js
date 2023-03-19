@@ -8,7 +8,7 @@ const proxy = httpProxy.createProxyServer({});
 const morgan = require('morgan');
 app.use(morgan('tiny'));
 
-app.use('/', (req, res)=>{
+app.get('/', (req, res)=>{
   res.status(200).send({message : "success"});
 })
 
